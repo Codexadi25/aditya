@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Sahu – Team Leader | QA | Trainer | Customer Operations</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink-mid: #3d3d5c;
+    --ink-light: #6b6b8a;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --accent-mid: #93c5fd;
+    --bg: #f8f9ff;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --tag-bg: #eff6ff;
+    --tag-text: #1d4ed8;
+    --success: #059669;
+    --success-bg: #d1fae5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 56px 64px 48px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeDown 0.7s ease forwards;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(37,99,235,0.18);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(37,99,235,0.1);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 960px; }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .hero-name span { color: var(--accent-mid); }
+  .hero-title {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+  }
+  .hero-targets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+  .target-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 0.5px solid rgba(147,197,253,0.5);
+    color: var(--accent-mid);
+    background: rgba(37,99,235,0.15);
+  }
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.09);
+    border: 0.5px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .contact-pill:hover { background: rgba(37,99,235,0.4); border-color: var(--accent-mid); }
+  .contact-pill svg { flex-shrink: 0; opacity: 0.75; }
+  .whatsapp-pill { background: rgba(37,211,102,0.12); border-color: rgba(37,211,102,0.3); }
+  .whatsapp-pill:hover { background: rgba(37,211,102,0.28); border-color: #25D366; }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    max-width: 1120px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 4px 40px rgba(26,26,46,0.07);
+  }
+  .sidebar {
+    background: #f1f5ff;
+    padding: 40px 26px;
+    border-right: 0.5px solid var(--border);
+  }
+  .main { padding: 44px 48px 64px; }
+
+  /* ── SECTION LABEL ── */
+  .section { margin-bottom: 36px; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--accent-mid);
+    opacity: 0.35;
+  }
+
+  /* ── SIDEBAR ANIMATIONS ── */
+  .sidebar .section {
+    opacity: 0;
+    transform: translateX(-12px);
+    animation: slideInLeft 0.5s ease forwards;
+  }
+  .sidebar .section:nth-child(1) { animation-delay: 0.2s; }
+  .sidebar .section:nth-child(2) { animation-delay: 0.32s; }
+  .sidebar .section:nth-child(3) { animation-delay: 0.44s; }
+  .sidebar .section:nth-child(4) { animation-delay: 0.56s; }
+  .sidebar .section:nth-child(5) { animation-delay: 0.68s; }
+
+  /* ── MAIN ANIMATIONS ── */
+  .main .section {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  .main .section:nth-child(1) { animation-delay: 0.25s; }
+  .main .section:nth-child(2) { animation-delay: 0.38s; }
+  .main .section:nth-child(3) { animation-delay: 0.51s; }
+
+  /* ── SKILLS ── */
+  .skill-group { margin-bottom: 18px; }
+  .skill-group-title {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--ink-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 5px;
+    margin: 2px 2px;
+    border: 0.5px solid #bfdbfe;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+  .highlight-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ── EDUCATION CARDS (sidebar) ── */
+  .edu-full-card {
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    background: var(--white);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .edu-full-card:hover {
+    box-shadow: 0 4px 14px rgba(37,99,235,0.09);
+    transform: translateY(-1px);
+  }
+  .edu-full-row { display: flex; align-items: center; gap: 12px; }
+  .edu-full-icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .edu-full-body { flex: 1; min-width: 0; }
+  .edu-full-degree {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .edu-full-school { font-size: 11.5px; color: var(--ink-light); }
+  .edu-year-pill {
+    font-size: 10.5px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 0.5px solid #bfdbfe;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── ADDITIONAL INFO ── */
+  .additional-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .add-item {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .add-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .add-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.78;
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+  }
+
+  /* ── COMPETENCIES ── */
+  .competencies { display: flex; flex-wrap: wrap; gap: 7px; }
+  .comp-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    padding: 5px 13px;
+    border: 0.5px solid var(--border);
+    border-radius: 7px;
+    background: var(--white);
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .comp-tag:hover { border-color: var(--accent-mid); background: var(--accent-light); color: var(--accent); }
+  .comp-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-mid); flex-shrink: 0; }
+
+  /* ── EXPERIENCE CARDS ── */
+  .exp-card {
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideIn 0.5s ease forwards;
+  }
+  .exp-card:nth-child(1) { animation-delay: 0.35s; }
+  .exp-card:nth-child(2) { animation-delay: 0.5s; }
+  .exp-card:nth-child(3) { animation-delay: 0.65s; }
+  .exp-card:nth-child(4) { animation-delay: 0.8s; }
+  .exp-card:hover { box-shadow: 0 6px 22px rgba(37,99,235,0.09); transform: translateY(-2px); }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px; bottom: 18px;
+    width: 3px;
+    background: var(--accent);
+    border-radius: 0 2px 2px 0;
+    opacity: 0.55;
+  }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 3px;
+  }
+  .exp-title { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .exp-period {
+    font-size: 11.5px;
+    color: var(--white);
+    background: var(--accent);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .exp-company { font-size: 12.5px; font-weight: 500; color: var(--accent); margin-bottom: 11px; }
+  .exp-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 7px;
+    font-weight: 600;
+  }
+  .badge-current { background: var(--success-bg); color: var(--success); }
+  .badge-rehire { background: #fef3c7; color: #92400e; }
+  .exp-list { list-style: none; padding: 0; }
+  .exp-list li {
+    font-size: 13px;
+    color: var(--ink-mid);
+    padding: 4px 0 4px 17px;
+    position: relative;
+    line-height: 1.6;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .exp-list li:last-child { border-bottom: none; }
+  .exp-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .exp-note {
+    font-size: 12px;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 9px;
+    padding: 7px 12px;
+    background: var(--bg);
+    border-radius: 6px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown { to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    * { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .exp-card:hover, .edu-full-card:hover { box-shadow: none; transform: none; }
+  }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .hero { padding: 36px 24px 32px; }
+    .hero-name { font-size: 36px; }
+    .main { padding: 28px 20px 48px; }
+    .sidebar { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .additional-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ATS hidden metadata -->
+<div style="display:none" aria-hidden="false">
+  <h1>Aditya Sahu</h1>
+  <p>Team Leader | Quality Analyst | Trainer | Customer Service Operations Executive</p>
+  <p>Email: contactaditya25@gmail.com | Phone: +91 7985693955 | Location: Kanpur, Uttar Pradesh</p>
+  <p>Skills: Team Leadership, Quality Assurance, Process Training, SOP Development, CRM, SLA Compliance, Power BI, Advanced Excel, Python, Agentic AI, MIS Reporting, Escalation Management, Coaching, Performance Management</p>
+</div>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="hero-inner">
+    <h1 class="hero-name">Aditya <span>Sahu</span></h1>
+    <p class="hero-title">Customer Service &amp; Operations Executive</p>
+    <div class="hero-targets" aria-label="Target roles">
+      <span class="target-badge">Team Leader</span>
+      <span class="target-badge">Quality Analyst</span>
+      <span class="target-badge">Process Trainer</span>
+      <span class="target-badge">Operations</span>
+    </div>
+    <nav class="contact-bar" aria-label="Contact information">
+      <a class="contact-pill whatsapp-pill"
+         href="https://wa.me/917985693955?text=Congratulations%20we%20are%20hiring%20you%20as%20a%20XXXXXXX%20at%20YYYYYY%20company."
+         target="_blank" rel="noopener" aria-label="WhatsApp Aditya Sahu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.104.546 4.078 1.5 5.793L0 24l6.38-1.47A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.937 0-3.746-.518-5.3-1.418l-.38-.22-3.787.872.906-3.682-.247-.387A9.94 9.94 0 012 12C2 6.478 6.478 2 12 2s10 4.478 10 10-4.478 10-10 10z"/></svg>
+        WhatsApp
+      </a>
+      <a class="contact-pill" href="tel:+917985693955" aria-label="Call Aditya Sahu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        +91 7985 6939 55
+      </a>
+      <a class="contact-pill" href="mailto:contactaditya25@gmail.com" aria-label="Email Aditya Sahu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        contactaditya25@gmail.com
+      </a>
+      <span class="contact-pill" aria-label="Location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Kanpur, Uttar Pradesh
+      </span>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar" role="complementary" aria-label="Skills, highlights, education, personal details">
+
+    <!-- Core Competencies -->
+    <section class="section" aria-labelledby="comp-sidebar-heading">
+      <h2 class="section-label" id="comp-sidebar-heading">Core Competencies</h2>
+      <div class="competencies" role="list">
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Team Leadership</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Quality Assurance</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Process Training</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Coaching &amp; Mentoring</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>SOP Development</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>SLA Compliance</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Escalation Management</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Performance Monitoring</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>CRM Management</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Process Improvement</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>MIS Reporting</span>
+        <span class="comp-tag" role="listitem"><span class="comp-dot" aria-hidden="true"></span>Email &amp; Voice Support</span>
+      </div>
+    </section>
+
+    <!-- Key Highlights -->
+    <section class="section" aria-labelledby="highlights-heading">
+      <h2 class="section-label" id="highlights-heading">Key Highlights</h2>
+      <div class="highlight-item"><div class="highlight-dot" aria-hidden="true"></div><p>Re-hired by Startek post ramp-down — recognised for sustained performance excellence</p></div>
+      <div class="highlight-item"><div class="highlight-dot" aria-hidden="true"></div><p>Excellent Quality scores maintained across blended email and voice processes</p></div>
+      <div class="highlight-item"><div class="highlight-dot" aria-hidden="true"></div><p>Authored SOP documentation and canned responses adopted LOB-wide</p></div>
+      <div class="highlight-item"><div class="highlight-dot" aria-hidden="true"></div><p>Mentored new joiners; managed team ops under Team Leader guidance</p></div>
+      <div class="highlight-item"><div class="highlight-dot" aria-hidden="true"></div><p>Generated agent performance reports from processed ticket dump data</p></div>
+      <div class="highlight-item"><div class="highlight-dot" aria-hidden="true"></div><p>Near-zero error rates during Zomato festive and peak-demand deployments</p></div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section" aria-labelledby="skills-heading">
+      <h2 class="section-label" id="skills-heading">Technical Skills</h2>
+      <div class="skill-group">
+        <p class="skill-group-title">Analytics &amp; Reporting</p>
+        <span class="tag">Power BI</span>
+        <span class="tag">Advanced Excel</span>
+        <span class="tag">Python (Data Analysis)</span>
+        <span class="tag">MIS Reporting</span>
+        <span class="tag">AI Dashboard Generation</span>
+        <span class="tag">Data Manipulation</span>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Operations &amp; Quality</p>
+        <span class="tag">CRM Systems</span>
+        <span class="tag">SLA Management</span>
+        <span class="tag">QA Frameworks</span>
+        <span class="tag">SOP Development</span>
+        <span class="tag">Ticket Management</span>
+        <span class="tag">Process Documentation</span>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">AI &amp; Tools</p>
+        <span class="tag">Agentic AI</span>
+        <span class="tag">Microsoft Office</span>
+        <span class="tag">Reporting Automation</span>
+      </div>
+    </section>
+
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main" role="main">
+
+    <!-- Professional Summary -->
+    <section class="section" aria-labelledby="summary-heading">
+      <h2 class="section-label" id="summary-heading">Professional Summary</h2>
+      <p class="summary-text">
+        Skilled Customer Service Executive with extensive experience providing exceptional support via both email and phone. Adept at handling a diverse range of customer inquiries, resolving complaints, and delivering effective solutions while maintaining a positive brand image. Expertise in multitasking across different communication platforms to ensure timely and accurate responses. Known for building strong customer relationships, managing escalations with professionalism, optimizing SOPs, coaching new joiners, and enhancing customer satisfaction — actively seeking growth into Team Leader, QA, or Trainer roles.
+      </p>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="section" aria-labelledby="experience-heading">
+      <h2 class="section-label" id="experience-heading">Professional Experience</h2>
+
+      <article class="exp-card" aria-label="Current role at Startek WIMO AI Handover">
+        <div class="exp-header">
+          <h3 class="exp-title">
+            Executive – Operations (Voice Process)
+            <span class="exp-badge badge-current">Current</span>
+            <span class="exp-badge badge-rehire">Re-hired</span>
+          </h3>
+          <span class="exp-period">Aug 2025 – Present</span>
+        </div>
+        <p class="exp-company">Startek · Zomato WIMO AI Handover Department</p>
+        <ul class="exp-list">
+          <li>Deliver customer support via voice process, consistently maintaining excellence in Quality score and full compliance with operational standards.</li>
+          <li>Independently restructured and optimized SOP documentation for the WIMO AI Handover LOB — improving process clarity, reducing ambiguity, and enabling faster onboarding for new agents.</li>
+          <li>Authored a comprehensive canned response library adopted LOB-wide by colleagues, directly supporting SLA adherence and quality consistency across the team.</li>
+          <li>Maintain detailed daily operational records as a disciplined personal practice, ensuring end-to-end traceability of interactions and process notes.</li>
+          <li>Proactively identify process gaps and contribute improvement recommendations to leadership, demonstrating readiness for a Quality Analyst or Trainer role.</li>
+        </ul>
+      </article>
+
+      <article class="exp-card" aria-label="Blended process role at Startek Zomato Support">
+        <div class="exp-header">
+          <h3 class="exp-title">Executive – Operations (Blended Process: Email &amp; Calls)</h3>
+          <span class="exp-period">Mar 2024 – Apr 2025</span>
+        </div>
+        <p class="exp-company">Startek · Zomato Support</p>
+        <ul class="exp-list">
+          <li>Delivered exceptional blended customer service (email and calls), handling refunds, missing/incomplete orders, incorrect items, and account issues with excellent SLA and quality metrics.</li>
+          <li>Maintained accurate CRM records for every customer interaction, ensuring seamless case tracking, resolution, and audit-readiness.</li>
+          <li>Mentored and coached new joiners on process adherence and performance targets; temporarily managed team operations under Team Leader's guidance — demonstrating natural leadership readiness.</li>
+          <li>Generated agent performance reports from processed ticket dump data, providing actionable insights to the team and supporting data-driven decision-making by leadership.</li>
+          <li>Collaborated with leadership to improve escalation procedures, service quality frameworks, and overall operational effectiveness.</li>
+        </ul>
+      </article>
+
+      <article class="exp-card" aria-label="Zomato CD Chat peak support deployment">
+        <div class="exp-header">
+          <h3 class="exp-title">HS Email Support Executive – Operations (Lucknow)</h3>
+          <span class="exp-period">Festive &amp; Peak Seasons</span>
+        </div>
+        <p class="exp-company">Startek · Zomato CD Chat Support</p>
+        <ul class="exp-list">
+          <li>Deployed to Zomato CD Chat Support during festive and high-demand periods, managing high-volume customer order issues with negligible error rates.</li>
+          <li>Delivered seamless, high-quality support under peak-load conditions — performance recognised and directly led to re-hire post-ramp-down.</li>
+        </ul>
+        <p class="exp-note">Outstanding peak-season performance was the direct reason for re-hire by Startek into the WIMO AI Handover Department.</p>
+      </article>
+
+      <article class="exp-card" aria-label="Tech Mahindra Flipkart role">
+        <div class="exp-header">
+          <h3 class="exp-title">Voice Support Executive – L1 Operations</h3>
+          <span class="exp-period">Sep 2023 – Nov 2023</span>
+        </div>
+        <p class="exp-company">Tech Mahindra · Flipkart</p>
+        <ul class="exp-list">
+          <li>Provided inbound voice customer support, resolving order-related concerns with accuracy and professionalism.</li>
+          <li>Maintained CRM documentation accuracy, service quality standards, and first-call resolution benchmarks.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Education -->
+    <section class="section" aria-labelledby="edu-heading">
+      <h2 class="section-label" id="edu-heading">Education</h2>
+
+      <div class="edu-full-card">
+        <div class="edu-full-row">
+          <div class="edu-full-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg>
+          </div>
+          <div class="edu-full-body">
+            <p class="edu-full-degree">Master of Business Administration (MBA) — Pursuing</p>
+            <p class="edu-full-school">Chhatrapati Shahu Ji Maharaj University (CSJMU), Kanpur</p>
+          </div>
+          <span class="edu-year-pill">Current</span>
+        </div>
+      </div>
+
+      <div class="edu-full-card">
+        <div class="edu-full-row">
+          <div class="edu-full-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 1.67 8.67 1.67 12 0v-5"/></svg>
+          </div>
+          <div class="edu-full-body">
+            <p class="edu-full-degree">Bachelor of Computer Applications (BCA)</p>
+            <p class="edu-full-school">Chhatrapati Shahu Ji Maharaj University (CSJMU), Kanpur</p>
+          </div>
+          <span class="edu-year-pill">2022 – 2025</span>
+        </div>
+      </div>
+
+      <div class="edu-full-card">
+        <div class="edu-full-row">
+          <div class="edu-full-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="edu-full-body">
+            <p class="edu-full-degree">All India Senior School Certificate Examination — Class XII (CBSE)</p>
+            <p class="edu-full-school">Laughing Buddha Academy</p>
+          </div>
+          <span class="edu-year-pill">2019 – 2021</span>
+        </div>
+      </div>
+
+      <div class="edu-full-card">
+        <div class="edu-full-row">
+          <div class="edu-full-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <div class="edu-full-body">
+            <p class="edu-full-degree">All India Secondary School Examination — Class X (CBSE)</p>
+            <p class="edu-full-school">Laughing Buddha Academy</p>
+          </div>
+          <span class="edu-year-pill">2017 – 2019</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Information -->
+    <section class="section" aria-labelledby="additional-heading">
+      <h2 class="section-label" id="additional-heading">Additional Information</h2>
+      <div class="additional-grid">
+        <div class="add-item">
+          <span class="add-label">Date of Birth</span>
+          <span class="add-value">25 October 2004</span>
+        </div>
+        <div class="add-item">
+          <span class="add-label">Nationality</span>
+          <span class="add-value">Indian</span>
+        </div>
+        <div class="add-item">
+          <span class="add-label">Religion</span>
+          <span class="add-value">Hindu</span>
+        </div>
+        <div class="add-item">
+          <span class="add-label">Marital Status</span>
+          <span class="add-value">Unmarried</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
